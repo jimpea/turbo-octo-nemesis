@@ -19,4 +19,10 @@ Here are the steps needed to clone a repository:
 - *Commit:* changes to master on local repository ` git commit -a -m "message"
 - *Push:* changes from local master back up to the remote on GitHub: `git push https://github.com/jimpea/turbo-octo-nemesis master`
 
+Work with a second machine:
+
+- *Prepare* the machine and clone the repository as above
+- *Update:* Update the local repository with any changes made on the second machin `git pull https://github.com/jimpea/turbo-octo-nemesis`
+- *Change and Commit:* as above.
+
 
