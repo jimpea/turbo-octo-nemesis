@@ -1,4 +1,4 @@
 turbo-octo-nemesis
 ==================
 
-Learning GitHub
+I am learning Git. This repository was cloned to the local machine and committed as 'First Commit'
