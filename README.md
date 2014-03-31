@@ -17,6 +17,6 @@ Here are the steps needed to clone a repository:
 - *Modify:* For instance  `nano README.md` and add a line.
 - *Check:* run `git status` to see changes.
 - *Commit:* changes to master on local repository ` git commit -a -m "message"
-- *Push:* changes from local master back up to the remote on GitHub: `git push https://github.com/jimpea/turbo-octo-nemesis master
+- *Push:* changes from local master back up to the remote on GitHub: `git push https://github.com/jimpea/turbo-octo-nemesis master`
 
 
