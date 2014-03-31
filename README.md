@@ -25,4 +25,10 @@ Work with a second machine:
 - *Update:* Update the local repository with any changes made on the second machin `git pull https://github.com/jimpea/turbo-octo-nemesis`
 - *Change and Commit:* as above.
 
+Update the remote
+
+- *View remote alises:* `git remote -v`
+- *Add alias:* `git remote add <name> <path>`
+- *Update remote:* `git push` or `git push <remotename>` - the remote name defults to 'origin'
+ 
 
