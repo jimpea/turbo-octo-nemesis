@@ -1,3 +1,5 @@
+// 'The Node Beginner Book' by Manuel Kiesling
+
 var http = require("http");
 var url = require("url");
 

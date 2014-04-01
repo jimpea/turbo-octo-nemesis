@@ -1,3 +1,5 @@
+// 'The Node Beginner Book' by Manuel Kiesling
+
 function start(response) {
   console.log("Request handler 'start' called.");
   var body = '<html>'+

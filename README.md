@@ -1,12 +1,7 @@
 turbo-octo-nemesis
 ==================
 
-I am learning Git. This repository was cloned to the local machine and committed as 'First Commit'.
-
-This second line added as 'Second Commit'.
-
-Added this third line after cloning into my linux box (above used the Nitrous
-box)
+I am learning how to use Node and GitHub - at the same time! The code comes from 'The Node Beginner Book' by Manuel Kiesling.
 
 Here are the steps needed to clone a repository:
 
