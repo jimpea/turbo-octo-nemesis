@@ -33,5 +33,18 @@ Check out a new branch
 - *Stage:* `git add README.md`
 - *Commit:* `git commit -m "added documentation to README.md"`
 
+Merge a local branch
+
+- `git checkout master`
+- `git pull origin master`
+- `git merge test`
+- `git push origin master`
+
+Delete a local branch
+
+- `git branch -d <branch-name>`
+
+
+
  
 
