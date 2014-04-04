@@ -25,5 +25,13 @@ Update the remote
 - *View remote alises:* `git remote -v`
 - *Add alias:* `git remote add <name> <path>`
 - *Update remote:* `git push` or `git push <remotename>` - the remote name defults to 'origin'
+
+Check out a new branch
+
+- *Checkout:* `git checkout -b <branchname>`
+- *Make Changes:* `nano README.md`
+- *Stage:* `git add README.md`
+- *Commit:* `git commit -m "added documentation to README.md"`
+
  
 
