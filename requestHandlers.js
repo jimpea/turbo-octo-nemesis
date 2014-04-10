@@ -1,5 +1,5 @@
 // 'The Node Beginner Book' by Manuel Kiesling
-var querystring = require("querystring");
+var querystring = require("querystring"), fs = require("fs");
 
 function start(response, postData) {
   console.log("Request handler 'start' called.");
@@ -26,5 +26,21 @@ function upload(response, postData) {
  response.end();
 }
 
+function show(response, postData) {
+  console.log("Request handler 'show' was called.");
+  fs.readFile("./tmp/Sample.png", "binary", function(error, file) {
+    if(error) {
+      response.writeHead(500, {"Content-Type": "text/plain"});
+      response.write(error.message + "\n"); //Original text wrong: the object 'err' does not exist here
+      response.end();
+    } else {
+      response.writeHead(200, {"Content-Type": "image/png"});
+      response.write(file, "binary");
+      response.end();
+    }
+  });
+}
+
 exports.start = start;
 exports.upload = upload;
+exports.show = show;

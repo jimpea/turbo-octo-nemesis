@@ -1,6 +1,9 @@
 turbo-octo-nemesis
 ==================
 
+Using Github
+------------
+
 I am learning how to use Node and GitHub - at the same time! The code comes from 'The Node Beginner Book' by Manuel Kiesling.
 
 Here are the steps needed to clone a repository:
@@ -45,13 +48,13 @@ Delete a local branch
 - `git branch -d <branch-name>`
 
 Running the Application
-=======================
+-----------------------
 
-On the Mint workstation, the application will run only once. Starting `nodejs index.js` a second time results in the error:
+If you use ctrl-z to kill the server, starting `nodejs index.js` a second time results in the error:
 
     events.js:72
-        throw er; // Unhandled 'error' event
-              ^
+    throw er; // Unhandled 'error' event
+          ^
     Error: listen EADDRINUSE
 
 This results from the proceeding process already using the port. I have to manually block the process after finding its process id:
@@ -61,6 +64,7 @@ This results from the proceeding process already using the port. I have to manua
     jim      20893  0.0  0.0   9456   940 pts/4    S+   09:02   0:00 grep --colour=auto node
     $ kill -9 20855
 
+Better: use ctrl-c to exit the server gracefully.
     
 
 
