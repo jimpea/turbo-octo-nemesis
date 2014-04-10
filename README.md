@@ -44,6 +44,26 @@ Delete a local branch
 
 - `git branch -d <branch-name>`
 
+Running the Application
+=======================
+
+On the Mint workstation, the application will run only once. Starting `nodejs index.js` a second time results in the error:
+
+    events.js:72
+        throw er; // Unhandled 'error' event
+              ^
+    Error: listen EADDRINUSE
+
+This results from the proceeding process already using the port. I have to manually block the process after finding its process id:
+
+    $ ps aux|grep node
+    jim      20855  0.1  0.2 659596 10776 pts/2    Tl     09:00   0:00 nodejs index.js
+    jim      20893  0.0  0.0   9456   940 pts/4    S+   09:02   0:00 grep --colour=auto node
+    $ kill -9 20855
+
+    
+
+
 
 
  
