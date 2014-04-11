@@ -24,13 +24,12 @@ function start(response) {
 }
 
 function upload(response, request) {
- console.log("Request handler 'upload' called."); 
- 
+ console.log("Request handler 'upload' called.");
   var form = new formidable.IncomingForm();
   console.log("about to parse");
+ 
   form.parse(request, function(error, fields, files) {
     console.log("parsing done");
-    console.log("path? " + files.upload.path);
     
     //Possible error on Windows systems: tried to rename to
     //an existing file
