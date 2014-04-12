@@ -30,7 +30,6 @@ function upload(response, request) {
  
   form.parse(request, function(error, fields, files) {
     console.log("parsing done");
-    console.log(files);
     
     //Possible error on Windows systems: tried to rename to
     //an existing file
