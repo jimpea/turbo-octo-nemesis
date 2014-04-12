@@ -8,12 +8,12 @@ function start(response) {
   
   var body = '<html>'+
       '<head>' +
-      '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>' +
+      '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />' +
       '</head>' +
       '<body>' + 
       '<form action="/upload" enctype="multipart/form-data" ' +
       'method="post">' +
-      '<input type="file" name="Upload" multiple="multiple">' +
+      '<input type="file" name="Upload" multiple="multiple"/>' +
       '<input type="submit" value="Upload File"/>' +
       '</form>' +
       '</body>' +
@@ -30,15 +30,20 @@ function upload(response, request) {
  
   form.parse(request, function(error, fields, files) {
     console.log("parsing done");
+    console.log(files);
     
     //Possible error on Windows systems: tried to rename to
     //an existing file
-    fs.rename(files.upload.path, "./tmp/Sample.png", function(err) {
+    //Note: files.Upload.path, not files.upload.path as in book!
+
+     
+    fs.rename(files.Upload.path, "./tmp/Sample.png", function(err) {
       if (err) {
         fs.unlink("./tmp/Sample.png");
-        fs.rename(files.upload.path, "./tmp/Sample.png");
+        fs.rename(files.Upload.path, "./tmp/Sample.png");
       }
     });
+    
     
     response.writeHead(200, {"Content-Type": "text/html"});
     response.write("received image: <br/>");
