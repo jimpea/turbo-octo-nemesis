@@ -1,7 +1,10 @@
 // 'The Node Beginner Book' by Manuel Kiesling
-var querystring = require("querystring"), 
-  fs = require("fs"), 
-  formidable = require("formidable");
+var requestHandler = {},
+  url              = require("url"),
+  mime             = require("mime"),
+  querystring      = require("querystring"), 
+  fs               = require("fs"), 
+  formidable       = require("formidable");
 
 function start(response) {
   console.log("Request handler 'start' called.");
@@ -9,6 +12,7 @@ function start(response) {
   var body = '<html>'+
       '<head>' +
       '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />' +
+      '<title>Welcome to the nodejs tutorial</title>' +
       '</head>' +
       '<body>' + 
       '<form action="/upload" enctype="multipart/form-data" ' +
@@ -30,39 +34,46 @@ function upload(response, request) {
  
   form.parse(request, function(error, fields, files) {
     console.log("parsing done");
-    
-    //Possible error on Windows systems: tried to rename to
-    //an existing file
-    //Note: files.Upload.path, not files.upload.path as in book!
 
-     
-    fs.rename(files.Upload.path, "./tmp/Sample.png", function(err) {
-      if (err) {
-        fs.unlink("./tmp/Sample.png");
-        fs.rename(files.Upload.path, "./tmp/Sample.png");
-      }
-    });
+    if (error) {
+      response.writeHead(500, {"Content-Type":"text/plain"});
+      response.end("Oops! " + error+ "\n");
+      return
+    }
     
-    
+    fs.renameSync(files.Upload.path, "./tmp/" + files.Upload.name); //Update the streamed filename with its original filename
+   
+        
+    console.log("Stream the files: " + files.Upload.name);
     response.writeHead(200, {"Content-Type": "text/html"});
     response.write("received image: <br/>");
-    response.write("<img src='/show' />");
-    response.end();
+    response.end("<img src='/show?i=" + files.Upload.name + "'/>"); //Display the file using the query variable (i)
   });
 }
 
-function show(response) {
+function show(response, request) {
   console.log("Request handler 'show' was called.");
-  fs.readFile("./tmp/Sample.png", "binary", function(error, file) {
+  var image = querystring.parse(url.parse(request.url).query).i; //Parse out the query string variable
+  
+  if(!image){ //Make sure we have a value
+    response.writeHead(500, {"Content-Type":"text/plain"});
+    response.end("No Image in QueryString");
+    return;
+  }
+  
+  fs.readFile("./tmp/" + image, "binary", function(error, file) {
+    var type = ""; //Mime-Type value
+    
     if(error) {
       response.writeHead(500, {"Content-Type": "text/plain"});
-      response.write(error.message + "\n"); //Original text wrong: the object 'err' does not exist here
-      response.end();
-    } else {
-      response.writeHead(200, {"Content-Type": "image/png"});
-      response.write(file, "binary");
-      response.end();
+      response.end(error.message + "\n");
+      return;
     }
+
+    type = mime.lookup(file);
+    response.writeHead(200, {"Content-Type":type});
+    response.end(file,"binary");
+ 
   });
 }
 

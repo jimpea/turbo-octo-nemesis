@@ -47,6 +47,12 @@ Delete a local branch
 
 - `git branch -d <branch-name>`
 
+Stash a local branch
+
+- `git stash` Store (stash) modified files that have not been committed. Use if you want to clear out the current branch prior to pulling the latest update from the server.
+- `git stash list` View the stashed files.
+- `git stash drop` Drop the latest stash.
+
 Running the Application
 -----------------------
 
@@ -65,6 +71,12 @@ This results from the proceeding process already using the port. I have to manua
     $ kill -9 20855
 
 Better: use ctrl-c to exit the server gracefully.
+
+Webtonio
+--------
+
+Extend the application from Manuel Kiesinger to handle any image file type and to retain the original file name. Chose file : save to local directory (./tmp) : display file
+
     
 
 
