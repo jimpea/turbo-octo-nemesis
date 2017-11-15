@@ -4,7 +4,7 @@ turbo-octo-nemesis
 Using Github
 ------------
 
-I am learning how to use Node and GitHub - at the same time! The code comes from 'The Node Beginner Book' by Manuel Kiesling.
+I am learning how to use Node and GitHub - at the same time! The code comes from [The Node Beginner Book](https://www.nodebeginner.org/) by Manuel Kiesling 
 
 Here are the steps needed to clone a repository:
 
